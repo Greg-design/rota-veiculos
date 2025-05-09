@@ -64,12 +64,15 @@ export default function TrackerMap() {
             ))}
             {selected && (
               <InfoWindow position={{ lat: selected.lat, lng: selected.lng }} onCloseClick={() => setSelected(null)}>
-                <div>
-                  <div className="font-bold">Placa: {selected.plate}</div>
-                  <div>Frota: {selected.fleet}</div>
-                  <div>{selected.createdAt}</div>
-                  <div>
-                    {selected.lat}, {selected.lng}
+                <div className="block w-full h-full min-w-[180px] max-w-xs bg-[#000f17] text-white rounded-lg shadow-lg p-3 font-sans">
+                  <div className="font-bold text-base mb-1">Placa {selected.plate}</div>
+                  <div className="font-medium mb-1">Frota: {selected.fleet}</div>
+                  <div className="mb-1">
+                    {new Date(selected.createdAt).toLocaleDateString("pt-BR")} -{" "}
+                    {new Date(selected.createdAt).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}
+                  </div>
+                  <div className="text-xs text-gray-300">
+                    {selected.lat.toFixed(6)}, {selected.lng.toFixed(6)}
                   </div>
                 </div>
               </InfoWindow>

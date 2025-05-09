@@ -5,9 +5,9 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <div className="p-14 flex items-center justify-between">
-        <div className="flex items-center">
-          <h1 className="text-4xl font-bold text-white mr-40">Lista</h1>
+      <div className="container mx-auto p-4 flex flex-row max-sm:flex-col items-center justify-between gap-4">
+        <div className="flex flex-row items-center">
+          <h1 className="text-4xl font-bold text-white mr-10">Lista</h1>
           <label className="inline-flex items-center mr-4">
             <input type="radio" name="lista" className="form-radio" />
             <span className="ml-2 text-white">Rastreados</span>
@@ -18,24 +18,20 @@ export default function Home() {
           </label>
         </div>
 
-        <div className="flex items-center">
+        <div className="flex flex-row items-center w-full sm:w-auto mt-4 sm:mt-0">
           <input
             placeholder="Buscar por placa ou frota"
             type="text"
-            className="bg-transparent border-2 w-96 border-gray-500 rounded-md p-2 text-white mr-6"
+            className="bg-transparent border-2 w-full sm:w-96 border-gray-500 rounded-md p-2 mr-6 text-white"
           />
-          <button
-            className="bg-blue-400 hover:bg-blue-600 
-               transition duration-300 cursor-pointer w-50 text-black rounded-md p-2 text-white"
-          >
+          <button className="bg-blue-400 hover:bg-blue-600 transition duration-300 cursor-pointer w-full sm:w-40 text-black rounded-md p-2 text-white">
             Novo
           </button>
         </div>
       </div>
       <hr className="border-blue-400 w-[93%] flex justify-center items-center mx-auto" />
-      <div>
-        <TrackerMap />
-      </div>
+
+      <TrackerMap />
     </div>
   );
 }
