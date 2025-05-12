@@ -1,7 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import Header from "./components/Header";
 import TrackerMap from "./components/TrackerMap";
 
 export default function Home() {
+  const [type, setType] = useState<string>("tracked");
   return (
     <div>
       <Header />
@@ -9,11 +13,23 @@ export default function Home() {
         <div className="flex flex-row items-center">
           <h1 className="text-4xl font-bold text-white mr-10">Lista</h1>
           <label className="inline-flex items-center mr-4">
-            <input type="radio" name="lista" className="form-radio" />
+            <input
+              type="radio"
+              name="lista"
+              className="form-radio"
+              checked={type === "tracked"}
+              onChange={() => setType("tracked")}
+            />
             <span className="ml-2 text-white">Rastreados</span>
           </label>
           <label className="inline-flex items-center">
-            <input type="radio" name="lista" className="form-radio" />
+            <input
+              type="radio"
+              name="lista"
+              className="form-radio"
+              checked={type === "others"}
+              onChange={() => setType("others")}
+            />
             <span className="ml-2 text-white">Outros</span>
           </label>
         </div>
@@ -31,7 +47,7 @@ export default function Home() {
       </div>
       <hr className="border-blue-400 w-[93%] flex justify-center items-center mx-auto" />
 
-      <TrackerMap />
+      <TrackerMap type={type} />
     </div>
   );
 }

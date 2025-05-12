@@ -25,10 +25,9 @@ type Vehicle = {
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL + "/vehicles/list-with-paginate?type=tracked&page=1";
 
-export default function TrackerMap() {
+export default function TrackerMap({ type }: { type: string }) {
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [selected, setSelected] = useState<Vehicle | null>(null);
-  const [type, setType] = useState<"tracked" | "other">("tracked");
 
   useEffect(() => {
     let isMounted = true;
