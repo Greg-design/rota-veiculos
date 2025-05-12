@@ -8,6 +8,8 @@ type Vehicle = {
   type: string;
   model: string;
   status: string;
+  lat: number;
+  lng: number;
 };
 
 type ApiResponse = {
@@ -106,7 +108,19 @@ export default function VehicleTable({ type }: { type: string }) {
               <td className="px-4 py-2">{v.fleet || "-"}</td>
               <td className="px-4 py-2">{traduzirTipo(v.type)}</td>
               <td className="px-4 py-2">{v.model}</td>
-              <td className="px-4 py-2">{traduzirStatus(v.status)}</td>
+              <td className="px-4 py-2 flex items-center gap-2">
+                {traduzirStatus(v.status)}
+                {v.lat && v.lng && (
+                  <a
+                    href={`https://www.google.com/maps?q=${v.lat},${v.lng}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-400 underline ml-2 text-xs hover:text-blue-200"
+                  >
+                    Ver no mapa
+                  </a>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>

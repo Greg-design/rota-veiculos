@@ -71,7 +71,14 @@ export default function TrackerMap({ type }: { type: string }) {
                     {new Date(selected.createdAt).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}
                   </div>
                   <div className="text-xs text-gray-300">
-                    {selected.lat.toFixed(6)}, {selected.lng.toFixed(6)}
+                    <a
+                      href={`https://www.google.com/maps?q=${selected.lat},${selected.lng}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline text-blue-300 hover:text-blue-100"
+                    >
+                      {selected.lat.toFixed(6)}, {selected.lng.toFixed(6)}
+                    </a>
                   </div>
                 </div>
               </InfoWindow>
