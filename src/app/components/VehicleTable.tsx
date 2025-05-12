@@ -19,6 +19,31 @@ type ApiResponse = {
   };
 };
 
+// Funções utilitárias para tradução
+const traduzirTipo = (tipo: string) => {
+  switch (tipo) {
+    case "vehicle":
+      return "Motor";
+    case "implement":
+      return "Implemento";
+    default:
+      return tipo;
+  }
+};
+
+const traduzirStatus = (status: string) => {
+  switch (status) {
+    case "active":
+      return "Disponível";
+    case "in_travel":
+      return "Em viagem";
+    case "maintenance":
+      return "Em manutenção";
+    default:
+      return status;
+  }
+};
+
 export default function VehicleTable({ type }: { type: string }) {
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [page, setPage] = useState(1);
@@ -79,9 +104,9 @@ export default function VehicleTable({ type }: { type: string }) {
             <tr key={v.id} className="border-b border-[#1a3344] hover:bg-[#001e2e] transition">
               <td className="px-4 py-2">{v.plate}</td>
               <td className="px-4 py-2">{v.fleet || "-"}</td>
-              <td className="px-4 py-2">{v.type}</td>
+              <td className="px-4 py-2">{traduzirTipo(v.type)}</td>
               <td className="px-4 py-2">{v.model}</td>
-              <td className="px-4 py-2">{v.status}</td>
+              <td className="px-4 py-2">{traduzirStatus(v.status)}</td>
             </tr>
           ))}
         </tbody>
