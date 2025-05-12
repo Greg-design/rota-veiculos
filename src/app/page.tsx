@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import TrackerMap from "./components/TrackerMap";
-
+import VehicleTable from "./components/VehicleTable";
 export default function Home() {
   const [type, setType] = useState<string>("tracked");
   return (
@@ -48,6 +48,7 @@ export default function Home() {
       <hr className="border-blue-400 w-[93%] flex justify-center items-center mx-auto" />
 
       <TrackerMap type={type} />
+      <VehicleTable type={type} />
     </div>
   );
 }
